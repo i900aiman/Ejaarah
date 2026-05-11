@@ -66,3 +66,41 @@ class VenueCard extends StatelessWidget {
     );
   }
 }
+
+class ReusableItemCard extends StatelessWidget {
+  final String itemName;
+  final String imagePath;
+
+  const ReusableItemCard({super.key, required this.itemName,required this.imagePath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Opacity(
+      opacity: 0.5,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+         Expanded( 
+          child: Card(
+            elevation: 4,
+            margin: const EdgeInsets.all(4), // Reduced margin to let it grow
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            child: Container(
+              width: double.infinity, // Ensures the card fills the width too
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.contain, // Keeps the logo sharp
+                ),
+              ),
+            ),
+          ),
+        ),
+                Text(itemName),
+        ],
+      ),
+    );
+  }
+}
